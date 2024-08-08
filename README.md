@@ -12,6 +12,7 @@ This project is a presentation management platform built using Node.js, Express,
 ## Technologies Used
 - **Backend**: Node.js with Express framework
 - **Database**: MongoDB
+- **Templating**: Not applicable for this backend-focused project
 - **Testing**: Postman for manual API testing
 
 ## Project Structure
