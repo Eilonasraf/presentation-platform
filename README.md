@@ -34,8 +34,8 @@ To get the project running locally:
    ```bash
    MONGODB_URI=mongodb://localhost:27017/presentations
 4. **Start the Server**:
-  ```bash
-  npm start
+   ```bash
+   npm start
 5. **Access the Application: Open http://localhost:3000 in your web browser**.
 
 ## API Endpoints
