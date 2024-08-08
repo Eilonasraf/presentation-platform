@@ -39,36 +39,36 @@ To get the project running locally:
 5. **Access the Application: Open http://localhost:3000 in your web browser**.
 
 ## API Endpoints
-**Create a presentation**:
-```bash
-POST /api/presentations
+1. **Create a presentation**:
+   ```bash
+   POST /api/presentations
 
-**Get a presentation by title**:
-```bash
-GET /api/presentations/:title
+2. **Get a presentation by title**:
+   ```bash
+   GET /api/presentations/:title
 
-**Add a slide to a presentation**:
-```bash
-POST /api/presentations/:title/slides
+3. **Add a slide to a presentation**:
+   ```bash
+   POST /api/presentations/:title/slides
 
-**Update a slide**:
-```bash
-PUT /api/presentations/:title/slides/:slideId
+4. **Update a slide**:
+   ```bash
+   PUT /api/presentations/:title/slides/:slideId
 
-**Update authors**:
-```bash
-PUT /api/presentations/:title/authors
+5. **Update authors**:
+   ```bash
+   PUT /api/presentations/:title/authors
 
-**Delete a slide**:
-```bash
-DELETE /api/presentations/:title/slides/:slideId
+6. **Delete a slide**:
+   ```bash
+   DELETE /api/presentations/:title/slides/:slideId
 
-**Delete a presentation**:
-```bash
+7. **Delete a presentation**:
+   ```bash
    DELETE /api/presentations/:title
 
-**Get all presentations**:
-```bash
+8. **Get all presentations**:
+   ```bash
    GET /api/presentations
 
 ## Postman Testing
@@ -77,50 +77,50 @@ Postman was used to manually test the API endpoints. Below are the steps and the
 Test Cases:
 
 1. **Create a Presentation**:
-Method: POST
-URL: http://localhost:3000/api/presentations
-Body:
-```bash
-json
-{
-  "title": "My Presentation",
-  "authors": ["Author1", "Author2"],
-  "dateOfPublishment": "2023-08-07"
-}
+   Method: POST
+   URL: http://localhost:3000/api/presentations
+   Body:
+   ```bash
+   json
+   {
+     "title": "My Presentation",
+     "authors": ["Author1", "Author2"],
+     "dateOfPublishment": "2023-08-07"
+   }
 
 2. **Get a Presentation by Title**:
 Method: GET
 URL: http://localhost:3000/api/presentations/My%20Presentation
 
 3. **Add a Slide to a Presentation**:
-Method: POST
-URL: http://localhost:3000/api/presentations/My%20Presentation/slides
-Body:
-```bash
-json
-{
-  "content": "This is the first slide."
-}
+   Method: POST
+   URL: http://localhost:3000/api/presentations/My%20Presentation/slides
+   Body:
+   ```bash
+   json
+   {
+     "content": "This is the first slide."
+   }
 
 4. **Update a Slide**:
-Method: PUT
-URL: http://localhost:3000/api/presentations/My%20Presentation/slides/{slideId}
-Body:
-```bash
-json
-{
-  "content": "This is the updated slide content."
-}
+   Method: PUT
+   URL: http://localhost:3000/api/presentations/My%20Presentation/slides/{slideId}
+   Body:
+   ```bash
+   json
+   {
+     "content": "This is the updated slide content."
+   }
 
 5. **Update Authors**:
-Method: PUT
-URL: http://localhost:3000/api/presentations/My%20Presentation/authors
-Body:
-```bash
-json
-{
-  "authors": ["Author1", "Author2", "Author3"]
-}
+   Method: PUT
+   URL: http://localhost:3000/api/presentations/My%20Presentation/authors
+   Body:
+   ```bash
+   json
+   {
+     "authors": ["Author1", "Author2", "Author3"]
+   }
 
 6. **Delete a Slide**:
 Method: DELETE
@@ -138,13 +138,11 @@ URL: http://localhost:3000/api/presentations
 
 1. **Install Postman from Postman**.
 2. **Import Collection**:
-   2.1- Create a new collection in Postman named "Presentation Platform".
-   2.2- Add requests for each of the endpoints mentioned above.
+   - Create a new collection in Postman named "Presentation Platform".
+   - Add requests for each of the endpoints mentioned above.
 
 3. **Run Requests**:
 Execute each request and verify the responses against the expected results.
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your proposed changes.
-
-
