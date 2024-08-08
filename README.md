@@ -36,7 +36,7 @@ To get the project running locally:
 4. **Start the Server**:
   ```bash
   npm start
-5. **Access the Application: Open http://localhost:3000 in your web browser.**
+5. **Access the Application: Open http://localhost:3000 in your web browser**.
 
 ## API Endpoints
 **Create a presentation**:
@@ -146,3 +146,5 @@ Execute each request and verify the responses against the expected results.
 
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your proposed changes.
+
+
