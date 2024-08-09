@@ -95,6 +95,24 @@ exports.deleteSlide = async (req, res) => {
   }
 };
 
+// addition 
+exports.deleteAllSlides = async (req, res) => {
+  const title = req.params.title;
+  try {
+      const presentation = await Presentation.findOneAndUpdate(
+          { title },
+          { slides: [] },
+          { new: true }
+      );
+      if (!presentation) {
+          return res.status(404).send();
+      }
+      res.send(presentation);
+  } catch (e) {
+      res.status(500).send(e);
+  }
+};
+
 exports.deletePresentation = async (req, res) => {
   const title = req.params.title;
   
