@@ -8,13 +8,13 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch((error) => console.error('Failed to connect to MongoDB:', error));
 
 const presentationRoutes = require('./routes/presentationRoutes');
-app.use('/api/presentations', presentationRoutes);
-
+app.use('/api', presentationRoutes);
+    
 app.use((err, req, res, next) => {
   console.error('Error:', err.message);
   console.error('Stack:', err.stack);
