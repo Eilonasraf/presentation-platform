@@ -38,11 +38,10 @@ exports.addSlideToPresentation = async (req, res) => {
     res.status(500).send(e);
   }
 };
+
 exports.updateAuthors = async (req, res) => {
   const title = req.params.title;
   const authors = req.body.authors;
-  console.log(`Updating authors for presentation: ${title}`);
-  console.log(`New authors list: ${authors}`);
   
   try {
     const presentation = await Presentation.findOneAndUpdate(
@@ -51,17 +50,13 @@ exports.updateAuthors = async (req, res) => {
       { new: true }
     );
     if (!presentation) {
-      console.log("Presentation not found");
       return res.status(404).send();
     }
-    console.log("Authors updated successfully");
     res.send(presentation);
   } catch (e) {
-    console.error("Error updating authors:", e);
     res.status(500).send(e);
   }
 };
-
 
 exports.updateSlide = async (req, res) => {
   const title = req.params.title;
@@ -76,7 +71,7 @@ exports.updateSlide = async (req, res) => {
     if (!slide) {
       return res.status(404).send();
     }
-    Object.assign(slide, updatedSlide);
+    Object.assign(slide, updatedSlide); // Updating the slide
     await presentation.save();
     res.send(presentation);
   } catch (e) {
@@ -102,18 +97,14 @@ exports.deleteSlide = async (req, res) => {
 
 exports.deletePresentation = async (req, res) => {
   const title = req.params.title;
-  console.log(`Deleting presentation: ${title}`);
   
   try {
     const presentation = await Presentation.findOneAndDelete({ title });
     if (!presentation) {
-      console.log("Presentation not found");
       return res.status(404).send();
     }
-    console.log("Presentation deleted successfully");
-    res.send(presentation);
+    res.send(presentation); // Sending the deleted presentation
   } catch (e) {
-    console.error("Error deleting presentation:", e);
     res.status(500).send(e);
   }
 };
