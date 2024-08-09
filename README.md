@@ -143,6 +143,3 @@ URL: http://localhost:3000/api/presentations
 
 3. **Run Requests**:
 Execute each request and verify the responses against the expected results.
-
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your proposed changes.
