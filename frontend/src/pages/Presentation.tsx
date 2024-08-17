@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Button from '../components/Button';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Presentation.css';
 
 interface Slide {
@@ -67,23 +69,6 @@ const Presentation: React.FC = () => {
     }
   };
 
-  const handleAddSlide = () => {
-    axios.post(`/api/presentations/${title}/slides`, { content: 'New Slide' })
-      .then(response => {
-        if (presentation) {
-          const updatedSlides = [...presentation.slides, response.data];
-          setPresentation({
-            ...presentation,
-            slides: updatedSlides,
-          });
-          setCurrentSlideIndex(updatedSlides.length); // Automatically move to the new slide
-          setCurrentContent('New Slide');
-          setEditMode(true);
-        }
-      })
-      .catch(error => console.error('Error adding slide:', error));
-  };
-
   const handleDeleteSlide = (slideId: string) => {
     if (presentation && currentSlideIndex > 0 && currentSlideIndex <= presentation.slides.length) {
       axios.delete(`/api/presentations/${title}/slides/${slideId}`)
@@ -115,7 +100,7 @@ const Presentation: React.FC = () => {
           </div>
         ))}
         <div className="thumbnail add-thumbnail" onClick={() => navigate(`/presentation/${title}/add-slide`)}>
-        + Add Slide
+          + Add Slide
         </div>
       </div>
     );
@@ -123,65 +108,56 @@ const Presentation: React.FC = () => {
 
   const renderSlideContent = () => {
     if (presentation) {
-      if (currentSlideIndex === 0) {
-        return (
-          <div>
-            <p><strong>Authors:</strong> {presentation.authors.join(', ')}</p>
-            <p><strong>Date of Publishment:</strong> {new Date(presentation.dateOfPublishment).toLocaleDateString()}</p>
-            <button className="next-btn" onClick={nextSlide} style={{ float: 'right' }}>Next</button>
-          </div>
-        );
-      } else if (editMode) {
-        return (
-          <div className="slide-content">
-          {editMode ? (
-            <>
-              <textarea
-                value={currentContent}
-                onChange={(e) => setCurrentContent(e.target.value)}
-                rows={5}
-                style={{ width: '100%' }}
-              />
-              <button onClick={handleSaveSlide}>Save</button>
-            </>
-          ) : (
-            <>
-              <div>{currentContent}</div>
-              <button className="update-btn" onClick={() => setEditMode(true)}>Update</button>
-            </>
-          )}
-        </div>
-        );
-      } else {
-        return (
-          <div className="slide-content">
-            {currentContent}
-            <button className="update-btn" onClick={() => setEditMode(true)}>Update</button>
-          </div>
-        );
-      }
+        if (currentSlideIndex === 0) {
+            return (
+                <div className="slide-content">
+                    <p><strong>Title:</strong> {presentation.title}</p>
+                    <p><strong>Authors:</strong> {presentation.authors.join(', ')}</p>
+                    <p><strong>Date of Publishment:</strong> {new Date(presentation.dateOfPublishment).toLocaleDateString()}</p>
+                    <Button onClick={nextSlide} className="btn-primary">Next</Button>
+                </div>
+            );
+        } else if (editMode) {
+            return (
+                <div className="slide-content">
+                    <textarea
+                        value={currentContent}
+                        onChange={(e) => setCurrentContent(e.target.value)}
+                        rows={5}
+                        style={{ width: '100%' }}
+                    />
+                    <Button onClick={handleSaveSlide} className="btn-primary">Save</Button>
+                </div>
+            );
+        } else {
+            return (
+                <div className="slide-content">
+                    {currentContent}
+                    <Button onClick={() => setEditMode(true)} className="btn-purple">Update</Button>
+                </div>
+            );
+        }
     } else {
-      return <p>Loading...</p>;
+        return <p>Loading...</p>;
     }
   };
 
   return (
     <div className="presentation-container">
-      <h1 className="presentation-title">{title}</h1>
       <div className="presentation-layout">
         {renderSlideThumbnails()}
         <div className="slide-content-container">
           {renderSlideContent()}
           {currentSlideIndex > 0 && (
             <div className="navigation-buttons">
-              <button className="previous-btn" onClick={previousSlide} disabled={currentSlideIndex === 0}>Previous</button>
-              <button className="next-btn" onClick={nextSlide} disabled={!presentation || currentSlideIndex >= presentation.slides.length}>Next</button>
+              <Button onClick={previousSlide} className="btn-secondary">Previous</Button>
+              <Button onClick={nextSlide} className="btn-secondary">Next</Button>
             </div>
           )}
         </div>
       </div>
       <div className="back-dashboard">
-        <button onClick={() => navigate('/')}>Back to Dashboard</button>
+        <Button onClick={() => navigate('/')} className="btn-secondary">Back to Dashboard</Button>
       </div>
     </div>
   );

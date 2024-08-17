@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Button from '../components/Button';
 import axios from 'axios';
 
 const AddSlide: React.FC = () => {
@@ -27,8 +28,8 @@ const AddSlide: React.FC = () => {
         rows={5}
         style={{ width: '100%' }}
       />
-      <button onClick={handleSaveSlide}>Save</button>
-      <button onClick={() => navigate(`/presentation/${title}`)}>Cancel</button>
+      <Button onClick={handleSaveSlide} className="btn-primary">Save</Button>
+      <Button onClick={() => navigate(`/presentation/${title}`)} className="btn-secondary">Cancel</Button>
     </div>
   );
 };

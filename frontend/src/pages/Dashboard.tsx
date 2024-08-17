@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import Button from '../components/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Dashboard.css';
 
+interface Presentation {
+  title: string;
+}
+
 const Dashboard: React.FC = () => {
-  const [presentations, setPresentations] = useState([]);
+  const [presentations, setPresentations] = useState<Presentation[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,18 +34,26 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="dashboard-container">
-      <h1>Presentation Dashboard</h1>
-      <button onClick={handleNavigateToCreate} className="create-presentation-btn">
+    <div className="container">
+      <h1 className="text-center my-4">Presentation Dashboard</h1>
+      <Button onClick={handleNavigateToCreate} className="btn btn-success mb-3">
         Create Presentation
-      </button>
-      <div className="presentation-grid">
-        {presentations.map((presentation: any) => (
-          <div className="presentation-card" key={presentation.title}>
-            <Link to={`/presentation/${presentation.title}`} className="presentation-link">
-              {presentation.title}
-            </Link>
-            <button className="delete-btn" onClick={() => handleDeletePresentation(presentation.title)}>Delete</button>
+      </Button>
+      <div className="row">
+        {presentations.map((presentation) => (
+          <div className="col-md-4 mb-3" key={presentation.title}>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">
+                  <Link to={`/presentation/${presentation.title}`} className="presentation-link">
+                    {presentation.title}
+                  </Link>
+                </h5>
+                <Button onClick={() => handleDeletePresentation(presentation.title)} className="btn btn-danger">
+                  Delete
+                </Button>
+              </div>
+            </div>
           </div>
         ))}
       </div>

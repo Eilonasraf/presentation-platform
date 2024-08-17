@@ -5,6 +5,7 @@ import Presentation from './pages/Presentation';
 import AddSlide from './pages/AddSlide';
 import CreatePresentation from './pages/CreatePresentation';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
