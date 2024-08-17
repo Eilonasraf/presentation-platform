@@ -1,0 +1,67 @@
+.dashboard-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.create-presentation-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.create-presentation-btn:hover {
+  background-color: #218838;
+}
+
+.presentation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.presentation-card {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  min-height: 150px; /* Adjust as needed */
+}
+
+.presentation-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.presentation-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
