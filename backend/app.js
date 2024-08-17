@@ -1,0 +1,32 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cors = require('cors'); // Import CORS middleware
+
+dotenv.config();
+
+const app = express();
+
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json());
+
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((error) => console.error('Failed to connect to MongoDB:', error));
+
+const presentationRoutes = require('./routes/presentationRoutes');
+app.use('/api', presentationRoutes);
+    
+app.use((err, req, res, next) => {
+  console.error('Error:', err.message);
+  console.error('Stack:', err.stack);
+  res.status(500).send('Something went wrong!');
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+module.exports = app;
