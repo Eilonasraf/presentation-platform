@@ -1,34 +1,47 @@
 # Presentation Platform
 
 ## Overview
-This project is a presentation management platform built using Node.js, Express, and MongoDB. It provides CRUD functionalities for managing presentations and their slides, following the MVC architecture to ensure a clean separation of concerns.
+This project is a full-stack presentation management platform built using Node.js, Express, React, and MongoDB. It provides CRUD functionalities for managing presentations and their slides, following the MVC architecture on the backend and React for the frontend.
 
 ## Features
 - **Create Presentations**: Add new presentations with a unique title, list of authors, and date of publishment.
 - **Manage Slides**: Add, update, and delete slides within presentations.
 - **Fetch Presentations**: Retrieve presentations by title or get a list of all presentations.
 - **Update Authors**: Modify the authors list of a presentation.
+- **Interactive Frontend**: React-based UI for interacting with the presentation data.
 
 ## Technologies Used
 - **Backend**: Node.js with Express framework
+- **Frontend**: React with Create React App
 - **Database**: MongoDB
 - **Templating**: Not applicable for this backend-focused project
 - **Testing**: Postman for manual API testing
 
 ## Project Structure
-The project follows the MVC (Model-View-Controller) architecture:
+The project follows the MVC (Model-View-Controller) architecture on the backend:
 - **Models**: Define the data structure and database schema for presentations and slides.
 - **Controllers**: Handle the business logic and link the models and views based on user actions and requests.
 - **Routes**: Define the API endpoints and link them to the corresponding controller logic.
 
+The frontend is built using React, providing an interactive user interface to interact with the backend API.
+
 ## Getting Started
-To get the project running locally:
+
+### Prerequisites
+Make sure you have the following installed:
+- **Node.js**: v16 or later
+- **npm**: v7 or later
+- **Docker**: Latest version (if you want to use Docker for running the application)
+
+### Backend Setup
+
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Eilonasraf/presentation-platform.git
    cd presentation-platform
-2. **Install Dependencies**:
+2. **Install Backend Dependencies:**:
    ```bash
+   cd backend
    npm install
 3. **Set Up Environment Variables: Create a .env file at the root of the project and add the following**:
    ```bash
@@ -37,6 +50,31 @@ To get the project running locally:
    ```bash
    npm start
 5. **Access the Application: Open http://localhost:3000 in your web browser**.
+
+## Frontend Setup
+
+1. **Start the Server**:
+   ```bash
+   cd frontend
+
+2. **Install Frontend Dependencies**:
+   ```bash
+   npm install
+3. **Build the React App**:
+   ```bash
+   npm run build
+4. **Start the Frontend Server**:
+   ```bash
+   npm start
+5. **Access the Application: Open http://localhost:3000 in your web browser.**
+
+## Docker Setup (If you prefer to run the entire stack using Docker:)
+
+1. **Ensure Docker is Installed.**
+2. **Start the Application:**
+   ```bash
+   docker-compose up --build
+3. **Access the Application: Open http://localhost:3000 in your web browser.**
 
 ## API Endpoints
 1. **Create a presentation**:
@@ -143,3 +181,12 @@ URL: http://localhost:3000/api/presentations
 
 3. **Run Requests**:
 Execute each request and verify the responses against the expected results.
+
+## Notes
+
+- Backend Port: The backend API is running on port 5000. Make sure your frontend and backend are correctly configured to communicate.
+- Frontend Port: The frontend React application runs on port 3000.
+
+## License
+
+**This project is licensed under the MIT License.**
